@@ -23,11 +23,7 @@ data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-not
 #creating data in Tabular format via TabularDatasetFactory
 ds = TabularDatasetFactory.from_delimited_files(data)
 
-#clean data func
-x, y = clean_data(ds)
 
-# DONE: Split data into train and test sets.
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25)
 
 
 run = Run.get_context()
@@ -61,6 +57,11 @@ def clean_data(data):
     #returning the x & y
     return x_df, y_df
 
+#clean data func
+x, y = clean_data(ds)
+
+# DONE: Split data into train and test sets.
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25)
 
 def main():
     # Add arguments to script
