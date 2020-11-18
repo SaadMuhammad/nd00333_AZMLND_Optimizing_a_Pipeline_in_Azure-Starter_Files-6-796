@@ -34,9 +34,18 @@ The pipeline consist of compute target created in Azure. a pyhton script (train.
 
 Early stopping policy used here is BanditPolicy, its biggest benifit is that this policy terminates any runs early where the primary metric (accuray in our case) is not within the selected/pre-defined slack factor with respect to the best performing training run.
 
+![Screenshot](HyperDrive-Run.jpg)
+
+![Screenshot](HyperDrive1.jpg)
+
+
 ## AutoML
 
 AutoML generated around 25 models for us and 4 of them outperform the Logistic Regression model from Scikit-learn pipeline. The best performing model was VotingEnsemble with accuracy of 0.9172. Hyperparameters generated were 'min_samples_leaf' ,  'min_samples_leaf' and 'n_estimators'. 
+
+![Screenshot](AutoML-run.jpg)
+
+![Screenshot](Automl1.jpg)
 
 ## Pipeline comparison
 
