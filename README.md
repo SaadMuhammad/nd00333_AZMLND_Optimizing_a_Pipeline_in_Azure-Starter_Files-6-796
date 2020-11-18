@@ -3,12 +3,22 @@
 ## Overview
 This project is part of the Udacity Azure ML Nanodegree.
 In this project, we build and optimize an Azure ML pipeline using the Python SDK and a provided Scikit-learn model.
-This model is then compared to an Azure AutoML run.
+This model is then compared to an Azure AutoML run. In this project, we have tested the working of both Python SDK and Azure AutoML. 
+The Azure SDK for Python is composed solely of over 180 individual Python libraries that relate to specific Azure services.
+On the other Hand Azure AutoML is a no code solution which employ Azure's built-in capabilities for common machine learning tasks like 
+classification, regression, and time-series forecasting
 
 ## Summary
 **In 1-2 sentences, explain the problem statement: e.g "This dataset contains data about... we seek to predict..."**
+**Problem:**
+We were given a dataset of Bank Marketing with primary task of binary classification. We have to clean and transform the dataset 
+and employ both Python SDK and AutoML on it. The dataset provided had class imbalance as well and no missing values.
 
 **In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..."**
+**Solution:**
+We have used in dataset on Python SDK and Azure AutoML. On Python SDK we used Logistic Regression with Choice on Hyper Params.
+While on AutoML run, we have a greater choice of models. Logistic Regression had an accuracy of 0.91344 on Python SDK via HyperDrive
+and best performing model was VotingEnsemble with accuracy of 0.9172 on Azure AutoMl run.
 
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
@@ -25,7 +35,4 @@ This model is then compared to an Azure AutoML run.
 
 ## Future work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
-
-## Proof of cluster clean up
-**If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
-**Image of cluster marked for deletion**
+Apart from checking high cardinality, checking for missing values and  class imbalance. I would like to see re-sampling techniques be added in AutoML to further improve model biases toward majority classes due to few data points/observation in minority classes. This will further strenghten the Fair AI policy also.
