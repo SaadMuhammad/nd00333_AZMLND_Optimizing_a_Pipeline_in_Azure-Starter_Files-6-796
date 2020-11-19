@@ -29,7 +29,7 @@ The pipeline consist of compute target created in Azure. a pyhton script (train.
 
 
 2 paramters were used here, Inverse of regularization strength '--C' and 'max_iters'
-'--C' is a trade of paramter of logistic regression and is used to apply penalty on magnitude of paramters to reduce overfitting higher values of C correspond to less regularizationand wise versa and 'max_iters' is the number of iterations model will take to converge to a minima.
+'--C' is a trade of paramter of logistic regression and is used to apply penalty on magnitude of paramters to reduce overfitting higher values of C correspond to less regularizationand wise versa and 'max_iters' is the number of iterations model will take to converge to a minima. We have employed RandomSampling as our paramter sampling because the biggest benefit of RandomSampling is it choose hyperparamters randmoly thus reducing the computational time and complexity. Other options we had were Grid sampling and Bayesian sampling both of them had their own importance like Grid sampling confines the search within a given set of paramters while Bayesian sampling select the next set of hyperparameters based on how the previous hyperparams performed. For Extensive search we can employ RandomSampling as a starting point and then using those hyperparameters do a Grid or Bayesian sampling as per our understanding of the problem and time.
 
 
 Early stopping policy used here is BanditPolicy, its biggest benifit is that this policy terminates any runs early where the primary metric (accuray in our case) is not within the selected/pre-defined slack factor with respect to the best performing training run.
@@ -41,7 +41,8 @@ Early stopping policy used here is BanditPolicy, its biggest benifit is that thi
 
 ## AutoML
 
-AutoML generated around 25 models for us and 4 of them outperform the Logistic Regression model from Scikit-learn pipeline. The best performing model was VotingEnsemble with accuracy of 0.9172. Hyperparameters generated were 'min_samples_leaf' ,  'min_samples_leaf' and 'n_estimators'. 
+AutoML generated around 25 models for us with 4 cross validations and 4 model out of 25 outperform the Logistic Regression model from Scikit-learn pipeline. The best performing model was VotingEnsemble with accuracy of 0.9172. VotingEnsemble works by combining the predictions from several models. This enable a combine mechanism that improve model performance and achieving better performance than any single model would.
+Hyperparameters generated were 'min_samples_leaf' ,  'min_samples_leaf' and 'n_estimators'. Since our dataset is imbalanced we can use a different metrics than accurcay here like AUC and ROC_AUC_Score.
 
 ![Screenshot](AutoML-run.jpg)
 
